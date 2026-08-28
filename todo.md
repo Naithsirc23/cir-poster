@@ -18,7 +18,7 @@
 - [x] Escribir y ejecutar tests Vitest para validaciones y procedimientos principales.
 - [x] Ejecutar type-check, build y revisión de logs.
 - [x] Capturar screenshots de validación visual.
-- [ ] Crear checkpoint final antes de entregar.
+- [x] Crear checkpoint final antes de entregar.
 - [x] Añadir un estado de reintento explícito para fallos de generación, con CTA claro de recuperación.
 - [x] Realizar y documentar una validación de accesibilidad completa: foco visible, teclado y reduced motion.
 - [x] Escribir tests Vitest para los procedimientos principales de contenido y persistencia.
