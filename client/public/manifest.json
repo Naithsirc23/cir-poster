@@ -1,0 +1,13 @@
+{
+  "name": "CIR Post Studio",
+  "short_name": "CIR Post",
+  "description": "Convierte ideas rápidas en borradores claros para redes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080b0a",
+  "theme_color": "#080b0a",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

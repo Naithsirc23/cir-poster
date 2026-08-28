@@ -1,0 +1,33 @@
+# Project TODO
+
+- [x] Definir modelo de contenido para idea, objetivo, audiencia, tono, mensaje central, CTA, canal, formato y borrador.
+- [x] Crear shell mobile-first inspirado en una conversación con barra de navegación inferior.
+- [x] Implementar dirección visual premium con transparencias, texturas, alto contraste y tokens consistentes.
+- [x] Implementar flujo guiado desde nota rápida hasta brief de contenido.
+- [x] Implementar selector de canal con LinkedIn completo y Facebook, Instagram carrusel y TikTok preparados.
+- [x] Integrar generación asistida por IA desde el servidor con salida estructurada.
+- [x] Implementar estados de generación: pendiente, procesando, resultado, error y reintento.
+- [x] Crear preview editable de post LinkedIn con edición de texto y CTA.
+- [x] Visualizar etapas de progreso del flujo de creación.
+- [x] Crear biblioteca de borradores con guardar, retomar, duplicar, archivar y organizar.
+- [x] Persistir borradores por usuario en base de datos.
+- [x] Añadir navegación entre Crear, Borradores y Perfil/Ajustes.
+- [x] Añadir manifest PWA y configuración mobile-first instalable.
+- [x] Validar responsive en móvil, tablet y desktop.
+- [x] Validar accesibilidad, foco visible y prefers-reduced-motion.
+- [x] Escribir y ejecutar tests Vitest para validaciones y procedimientos principales.
+- [x] Ejecutar type-check, build y revisión de logs.
+- [x] Capturar screenshots de validación visual.
+- [ ] Crear checkpoint final antes de entregar.
+- [x] Añadir un estado de reintento explícito para fallos de generación, con CTA claro de recuperación.
+- [x] Realizar y documentar una validación de accesibilidad completa: foco visible, teclado y reduced motion.
+- [x] Escribir tests Vitest para los procedimientos principales de contenido y persistencia.
+- [x] Revisar la biblioteca para completar organización de borradores.
+- [x] Completar validación responsive en móvil, tablet y desktop.
+- [x] Capturar y revisar una viewport tablet de aproximadamente 768x1024.
+- [x] Realizar una pasada verificable de navegación por teclado y documentar el orden de foco.
+- [x] Añadir cobertura testeable para la capa de persistencia de borradores.
+- [x] Realizar una validación real de teclado en Crear, Borradores, filtros y navegación inferior con Tab, Shift+Tab, Enter y Escape.
+- [x] Ejecutar auditoría real con Enter en Crear, Borradores y filtros, y verificar Escape donde aplique.
+- [x] Documentar evidencia observable del recorrido y activación por teclado en Borradores y filtros.
+- [x] Activar con Enter una acción verificable dentro del flujo Crear y documentar el resultado observable.

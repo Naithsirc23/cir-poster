@@ -1,17 +1,7 @@
 import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
 
-/**
- * Core user table backing auth flow.
- * Extend this file with additional tables as your product grows.
- * Columns use camelCase to match both database fields and generated types.
- */
 export const users = mysqlTable("users", {
-  /**
-   * Surrogate primary key. Auto-incremented numeric value managed by the database.
-   * Use this for relations between tables.
-   */
   id: int("id").autoincrement().primaryKey(),
-  /** Manus OAuth identifier (openId) returned from the OAuth callback. Unique per user. */
   openId: varchar("openId", { length: 64 }).notNull().unique(),
   name: text("name"),
   email: varchar("email", { length: 320 }),
@@ -22,7 +12,25 @@ export const users = mysqlTable("users", {
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),
 });
 
+export const drafts = mysqlTable("content_drafts", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  title: varchar("title", { length: 180 }).notNull(),
+  idea: text("idea").notNull(),
+  channel: varchar("channel", { length: 40 }).notNull().default("linkedin"),
+  format: varchar("format", { length: 40 }).notNull().default("post"),
+  objective: varchar("objective", { length: 120 }).notNull(),
+  audience: varchar("audience", { length: 180 }).notNull(),
+  tone: varchar("tone", { length: 80 }).notNull(),
+  coreMessage: text("coreMessage").notNull(),
+  callToAction: varchar("callToAction", { length: 220 }).notNull(),
+  content: text("content").notNull(),
+  status: mysqlEnum("status", ["draft", "ready", "archived"]).default("draft").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
-
-// TODO: Add your tables here
+export type Draft = typeof drafts.$inferSelect;
+export type InsertDraft = typeof drafts.$inferInsert;
