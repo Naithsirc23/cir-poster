@@ -31,3 +31,4 @@
 - [x] Ejecutar auditoría real con Enter en Crear, Borradores y filtros, y verificar Escape donde aplique.
 - [x] Documentar evidencia observable del recorrido y activación por teclado en Borradores y filtros.
 - [x] Activar con Enter una acción verificable dentro del flujo Crear y documentar el resultado observable.
+- [ ] Publicar el estado actual de CIR Post Studio en github.com/Naithsirc23/cir-poster.git.
