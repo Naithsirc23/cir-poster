@@ -57,3 +57,15 @@ describe("content router", () => {
     expect(updateDraft).toHaveBeenCalledWith(10, 7, { status: "archived" });
   });
 });
+
+
+describe("instagram carousel generation", () => {
+  it("requests six slides with a bounded output", async () => {
+    const carouselBrief = { ...brief, channel: "instagram" as const, format: "carousel" as const };
+    const generated = { title: "Carrusel IA", hook: "Hook", body: "Caption", callToAction: "Guárdalo", hashtags: ["#IA"], structure: ["Hook", "CTA"], caption: "Caption", slides: Array.from({ length: 6 }, (_, index) => ({ order: index + 1, title: `Slide ${index + 1}`, body: "Texto breve" })) };
+    vi.mocked(invokeLLM).mockResolvedValue({ choices: [{ message: { content: JSON.stringify(generated) } }] } as never);
+    const result = await appRouter.createCaller(ctx).content.generate(carouselBrief);
+    expect(result.slides).toHaveLength(6);
+    expect(vi.mocked(invokeLLM).mock.calls[0]?.[0]).toMatchObject({ maxTokens: 1200 });
+  });
+});

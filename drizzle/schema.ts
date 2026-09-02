@@ -25,6 +25,7 @@ export const drafts = mysqlTable("content_drafts", {
   coreMessage: text("coreMessage").notNull(),
   callToAction: varchar("callToAction", { length: 220 }).notNull(),
   content: text("content").notNull(),
+  slides: text("slides"),
   status: mysqlEnum("status", ["draft", "ready", "archived"]).default("draft").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),

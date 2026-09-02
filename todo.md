@@ -32,3 +32,23 @@
 - [x] Documentar evidencia observable del recorrido y activación por teclado en Borradores y filtros.
 - [x] Activar con Enter una acción verificable dentro del flujo Crear y documentar el resultado observable.
 - [x] Publicar el estado actual de CIR Post Studio en github.com/Naithsirc23/cir-poster.git.
+- [x] Añadir formato Instagram carrusel al modelo de contenido y al selector de canales.
+- [x] Añadir estructura persistente de slides y caption para borradores de carrusel.
+- [x] Generar carruseles con salida IA estructurada y límites de tokens definidos.
+- [x] Construir preview 4:5 editable con navegación, duplicación y eliminación de slides.
+- [x] Guardar, retomar y filtrar carruseles desde la biblioteca existente.
+- [x] Añadir tests de validación para slides y generación de carrusel.
+- [x] Validar responsive, accesibilidad, build y capturas del flujo Instagram.
+- [x] Corregir el solapamiento del botón Continuar con la navegación inferior en la vista móvil.
+- [x] Quitar PRÓXIMAMENTE de Instagram y habilitarlo visualmente.
+- [x] Definir límite explícito de salida para generación de carrusel.
+- [x] Duplicar la slide activa desde el editor.
+- [x] Añadir filtro de biblioteca por canal/formato para carruseles.
+- [x] Añadir test de router para generación Instagram carrusel.
+- [x] Validar Instagram en móvil, tablet y desktop con evidencia específica.
+- [x] Confirmar y documentar que Continuar no queda cubierto en móvil.
+- [x] Validar explícitamente el flujo Instagram carrusel en tablet y desktop y documentar layout 4:5, navegación, caption, filtros y CTA.
+- [x] Abrir explícitamente el flujo Instagram carrusel en tablet y desktop, llegar al paso 4 y documentar editor 4:5, navegación, caption y CTA.
+- [x] Validar en tablet y desktop la biblioteca filtrada por carruseles y la reapertura de borradores.
+- [x] Guardar evidencia separada por viewport para el flujo Instagram.
+- [x] Evitar que los CTA del editor de carrusel queden bajo la navegación inferior en tablet y desktop.

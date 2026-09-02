@@ -32,3 +32,20 @@ describe("content schemas", () => {
     }).hashtags).toHaveLength(2);
   });
 });
+
+
+describe("instagram carousel schema", () => {
+  it("accepts six editable slides", () => {
+    const result = postOutputParser.parse({
+      title: "Carrusel",
+      hook: "Hook",
+      body: "Caption",
+      callToAction: "Guárdalo",
+      hashtags: ["#producto"],
+      structure: ["Hook", "Contexto"],
+      caption: "Caption editable",
+      slides: Array.from({ length: 6 }, (_, index) => ({ order: index + 1, title: `Slide ${index + 1}`, body: "Texto breve", visualHint: "Fondo limpio" })),
+    });
+    expect(result.slides).toHaveLength(6);
+  });
+});

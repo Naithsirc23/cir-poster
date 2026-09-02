@@ -20,6 +20,7 @@ export const contentBriefSchema = z.object({
 const draftInputSchema = contentBriefSchema.extend({
   title: z.string().min(1).max(180),
   content: z.string().min(1).max(12000),
+  slides: z.string().max(30000).optional(),
 });
 
 export const postOutputParser = z.object({
@@ -29,6 +30,8 @@ export const postOutputParser = z.object({
   callToAction: z.string(),
   hashtags: z.array(z.string()),
   structure: z.array(z.string()),
+  caption: z.string().default(""),
+  slides: z.array(z.object({ order: z.number(), eyebrow: z.string().optional(), title: z.string(), body: z.string(), visualHint: z.string().optional() })).default([]),
 });
 
 const postOutputSchema = {
@@ -40,8 +43,10 @@ const postOutputSchema = {
     callToAction: { type: "string" },
     hashtags: { type: "array", items: { type: "string" } },
     structure: { type: "array", items: { type: "string" } },
+    caption: { type: "string" },
+    slides: { type: "array", items: { type: "object", properties: { order: { type: "number" }, eyebrow: { type: "string" }, title: { type: "string" }, body: { type: "string" }, visualHint: { type: "string" } }, required: ["order", "title", "body"], additionalProperties: false } },
   },
-  required: ["title", "hook", "body", "callToAction", "hashtags", "structure"],
+  required: ["title", "hook", "body", "callToAction", "hashtags", "structure", "caption", "slides"],
   additionalProperties: false,
 } as const;
 
@@ -66,7 +71,7 @@ export const appRouter = router({
           },
           {
             role: "user",
-            content: `Crea un borrador para ${input.channel} en formato ${input.format}.\n\nIdea: ${input.idea}\nObjetivo: ${input.objective}\nAudiencia: ${input.audience}\nTono: ${input.tone}\nMensaje central: ${input.coreMessage}\nCTA: ${input.callToAction}\n\nPara LinkedIn, prioriza una apertura fuerte, párrafos respirables, una perspectiva concreta y una llamada a la conversación. No uses emojis salvo que sean imprescindibles.`,
+            content: `Crea un borrador para ${input.channel} en formato ${input.format}.\n\nIdea: ${input.idea}\nObjetivo: ${input.objective}\nAudiencia: ${input.audience}\nTono: ${input.tone}\nMensaje central: ${input.coreMessage}\nCTA: ${input.callToAction}\n\nPara LinkedIn, prioriza una apertura fuerte, párrafos respirables, una perspectiva concreta y una llamada a la conversación. Para Instagram carrusel, devuelve 6 slides con hook, contexto, idea central, desarrollo, aprendizaje y CTA; cada slide debe ser breve y tener una sugerencia visual. No uses emojis salvo que sean imprescindibles.`,
           },
         ],
         response_format: {
@@ -78,6 +83,7 @@ export const appRouter = router({
           },
         },
         reasoning: { effort: "low" },
+        maxTokens: input.format === "carousel" ? 1200 : 900,
       });
       const raw = response.choices[0]?.message?.content;
       const content = typeof raw === "string" ? raw : "";
@@ -85,7 +91,7 @@ export const appRouter = router({
       return postOutputParser.parse(JSON.parse(content));
     }),
     listDrafts: protectedProcedure.query(({ ctx }) => listDrafts(ctx.user.id)),
-    createDraft: protectedProcedure.input(draftInputSchema).mutation(({ ctx, input }) => createDraft({ ...input, userId: ctx.user.id, status: "draft" })),
+    createDraft: protectedProcedure.input(draftInputSchema).mutation(({ ctx, input }) => createDraft({ ...input, slides: input.slides ?? null, userId: ctx.user.id, status: "draft" })),
     updateDraft: protectedProcedure.input(z.object({ id: z.number().int().positive(), content: z.string().min(1).max(12000), title: z.string().min(1).max(180) })).mutation(({ ctx, input }) => updateDraft(input.id, ctx.user.id, { content: input.content, title: input.title })),
     duplicateDraft: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => duplicateDraft(input.id, ctx.user.id)),
     archiveDraft: protectedProcedure.input(z.object({ id: z.number().int().positive() })).mutation(({ ctx, input }) => updateDraft(input.id, ctx.user.id, { status: "archived" })),
