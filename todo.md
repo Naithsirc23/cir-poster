@@ -52,3 +52,7 @@
 - [x] Validar en tablet y desktop la biblioteca filtrada por carruseles y la reapertura de borradores.
 - [x] Guardar evidencia separada por viewport para el flujo Instagram.
 - [x] Evitar que los CTA del editor de carrusel queden bajo la navegación inferior en tablet y desktop.
+- [ ] Crear STATUS-ROADMAP.md con avances, pendientes, obstáculos y roadmap.
+- [ ] Documentar ejecución local desde filesystem y exposición PWA mediante Tailscale.
+- [ ] Publicar el estado actual y la documentación en Naithsirc23/cir-poster.
+- [ ] Verificar que main remoto contiene el commit final.
