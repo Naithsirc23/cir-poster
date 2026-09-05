@@ -52,7 +52,9 @@
 - [x] Validar en tablet y desktop la biblioteca filtrada por carruseles y la reapertura de borradores.
 - [x] Guardar evidencia separada por viewport para el flujo Instagram.
 - [x] Evitar que los CTA del editor de carrusel queden bajo la navegación inferior en tablet y desktop.
-- [ ] Crear STATUS-ROADMAP.md con avances, pendientes, obstáculos y roadmap.
-- [ ] Documentar ejecución local desde filesystem y exposición PWA mediante Tailscale.
-- [ ] Publicar el estado actual y la documentación en Naithsirc23/cir-poster.
-- [ ] Verificar que main remoto contiene el commit final.
+- [x] Crear STATUS-ROADMAP.md con avances, pendientes, obstáculos y roadmap.
+- [x] Documentar ejecución local desde filesystem y exposición PWA mediante Tailscale.
+- [x] Publicar el estado actual y la documentación en Naithsirc23/cir-poster.
+- [x] Verificar que main remoto contiene el commit final.
+- [ ] Comparar explícitamente el SHA de origin/main con el commit local final.
+- [ ] Empujar la actualización final de todo.md y verificar su SHA remoto.
